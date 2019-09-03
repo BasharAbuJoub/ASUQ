@@ -17,7 +17,7 @@ class QuestionController extends Controller
     {
         $questions = null;
         if($request->has('category')){
-            $questions = Question::where('category_id', $request->category);
+            $questions = Question::where('category_id', $request->category)->get();
         }else{
             $questions = Question::all();
         }

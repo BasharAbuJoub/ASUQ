@@ -18,7 +18,9 @@
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->name }}</td>
                 <td>
-                    <a class="button is-success is-small" href="#">Questions</a>
+                    <a class="button is-success is-small"
+
+                        href="{{ route('question.index', ['category' => $category->id]) }}">Questions</a>
                     <a class="button is-danger is-small"
                         href="{{ route('category.destroy', ['category' => $category->id]) }}">
                         Delete
