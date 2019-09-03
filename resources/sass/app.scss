@@ -1,0 +1,21 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap');
+
+// Variables
+@import 'variables';
+
+@import '~bulma/bulma';
+
+html, body {
+    font-weight: 600;
+    font-family: 'Nunito';
+}
+button{
+    font-family: 'Nunito';
+}
+.text-ellipsis{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
