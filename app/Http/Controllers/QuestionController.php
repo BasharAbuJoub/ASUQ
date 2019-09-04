@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Question;
+use App\Service\ImageUploader;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -58,12 +59,19 @@ class QuestionController extends Controller
             'image' => 'image'
         ]);
 
-        # TODO upload the image to the storage and update the image column in the databae.
+        $imagePath = null;
+        if($request->has('image')){
+            $uploader = new ImageUploader();
+            $image = $uploader->upload($request->image);
+            $imagePath = $image->getPathname();
+        }
+
 
         Question::create([
             'body' => $request->body,
             'score' => $request->score,
             'category_id' => $request->category_id,
+            'image' => $imagePath
         ]);
 
         return redirect()->route('question.index');

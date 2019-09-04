@@ -19,7 +19,6 @@ class CreateQuestionsTable extends Migration
             $table->string('body');
             $table->string('image')->nullable();
             $table->string('score');
-            $table->string('correct_answer_id');
             $table->timestamps();
         });
     }

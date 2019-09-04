@@ -17,10 +17,10 @@
 
             <tr>
                 <td>{{ $question->id }}</td>
-                <td class="text-ellipsis" style="width: 250px;">{{ $question->body }}</td>
+                <td class="" style="width: 250px;">{{ $question->body }}</td>
                 <td>{{ $question->category->name }}</td>
                 <td>
-                    <a class="button is-link is-small" href="#">Preview</a>
+                    <a class="button is-link is-small" href="{{asset($question->image)}}">Preview</a>
                     <a class="button is-success is-small" href="#">Answers</a>
                     <a class="button is-danger is-small"
                         href="{{ route('question.destroy', ['question' => $question->id]) }}">
