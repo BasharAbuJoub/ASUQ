@@ -19,11 +19,14 @@
                 <td>{{ $category->name }}</td>
                 <td>
                     <a class="button is-success is-small"
-
                         href="{{ route('question.index', ['category' => $category->id]) }}">Questions</a>
                     <a class="button is-danger is-small"
                         href="{{ route('category.destroy', ['category' => $category->id]) }}">
                         Delete
+                    </a>
+                    <a class="button is-warning is-small"
+                        href="{{ route('category.edit', ['category' => $category->id]) }}">
+                        Edit
                     </a>
                 </td>
             </tr>

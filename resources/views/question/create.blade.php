@@ -47,8 +47,14 @@
             <upload-image></upload-image>
         </div>
     </div>
+    <hr>
+
     <div class="columns">
         <div class="column is-12">
+
+            <div class="field">
+                <answers-group></answers-group>
+            </div>
             <div class="field">
                 <button type="submit" class="button is-success">Create</button>
             </div>

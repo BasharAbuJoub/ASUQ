@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Question;
+use App\Service\CreateAnswers;
 use App\Service\ImageUploader;
 use Illuminate\Http\Request;
 
@@ -52,12 +53,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'body' => 'required|string|min:4',
             'score' => 'required|integer|min:1',
             'category_id' => 'required|exists:categories,id',
             'image' => 'image'
         ]);
+
 
         $imagePath = null;
         if($request->has('image')){
@@ -66,13 +69,21 @@ class QuestionController extends Controller
             $imagePath = $image->getPathname();
         }
 
-
-        Question::create([
+        $question = Question::create([
             'body' => $request->body,
             'score' => $request->score,
             'category_id' => $request->category_id,
             'image' => $imagePath
         ]);
+
+        # Create Answers
+
+        $answerCreator = new CreateAnswers();
+        $answerCreator->handle($question->id, $request->answer_body,
+            ($request->is_correct == null ? array() : $request->is_correct),
+            $request->answer_images == null ? array() : $request->answer_images);
+
+
 
         return redirect()->route('question.index');
 
@@ -86,7 +97,11 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+
+        return view('question.show', [
+            'question' => $question
+        ]);
+
     }
 
     /**
@@ -97,7 +112,12 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        $answers = $question->answers;
+        return view('question.edit', [
+            'question' => $question,
+            'answers' => $answers,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -120,6 +140,9 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->answers()->delete();
+        $question->delete();
+        return redirect()->back();
+
     }
 }

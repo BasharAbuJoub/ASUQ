@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bb39bce6e4857add986b7f4df92de12",
+    "content-hash": "ff62c3c3c6db622881e576988160ca2e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3129,6 +3129,57 @@
             "time": "2019-09-03T14:39:46+00:00"
         },
         {
+            "name": "facade/ignition-code-editor",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition-code-editor.git",
+                "reference": "8bb704424bfe20c3c1f6552ba4ffde5883be8d51"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition-code-editor/zipball/8bb704424bfe20c3c1f6552ba4ffde5883be8d51",
+                "reference": "8bb704424bfe20c3c1f6552ba4ffde5883be8d51",
+                "shasum": ""
+            },
+            "require": {
+                "facade/ignition": "~1.0",
+                "illuminate/support": " 5.8.*|^6.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Facade\\CodeEditor\\CodeEditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Facade\\CodeEditor\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A code editor for Ignition",
+            "homepage": "https://github.com/facade/code-editor",
+            "keywords": [
+                "editor",
+                "ignition",
+                "laravel"
+            ],
+            "time": "2019-08-31T00:55:59+00:00"
+        },
+        {
             "name": "facade/ignition-contracts",
             "version": "1.0.0",
             "source": {
@@ -4841,6 +4892,63 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "sven/artisan-view",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/svenluijten/artisan-view.git",
+                "reference": "749379444b46cc8865f3c3fe3d9d704b75f202d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/svenluijten/artisan-view/zipball/749379444b46cc8865f3c3fe3d9d704b75f202d7",
+                "reference": "749379444b46cc8865f3c3fe3d9d704b75f202d7",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.4 || ^6.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "graham-campbell/testbench": "^4.0 || ^5.0",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sven\\ArtisanView\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sven\\ArtisanView\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sven Luijten",
+                    "email": "svenluijten1995@gmail.com",
+                    "homepage": "https://svenluijten.com"
+                }
+            ],
+            "description": "Manage your views in Laravel projects through artisan",
+            "keywords": [
+                "artisan",
+                "blade",
+                "laravel",
+                "templates",
+                "views"
+            ],
+            "time": "2019-09-03T16:04:52+00:00"
         },
         {
             "name": "theseer/tokenizer",

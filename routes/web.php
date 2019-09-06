@@ -15,5 +15,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('category', 'CategoryController')->except([]);
-Route::resource('question', 'QuestionController')->except([]);
+Route::prefix('control')->group(function(){
+    Route::prefix('category')->group(function(){
+        Route::get('create', 'CategoryController@create')->name('category.create');
+        Route::get('', 'CategoryController@index')->name('category.index');
+        Route::get('destroy/{category}', 'CategoryController@destroy')->name('category.destroy');
+        Route::post('store', 'CategoryController@store')->name('category.store');
+        Route::get('edit/{category}', 'CategoryController@edit')->name('category.edit');
+        Route::post('update/{category}', 'CategoryController@update')->name('category.update');
+    });
+
+
+    Route::prefix('question')->group(function(){
+        Route::get('', 'QuestionController@index')->name('question.index');
+        Route::get('show/{question}', 'QuestionController@show')->name('question.show');
+        Route::get('create', 'QuestionController@create')->name('question.create');
+        Route::post('store', 'QuestionController@store')->name('question.store');
+        Route::get('edit/{question}', 'QuestionController@edit')->name('question.edit');
+        Route::post('update/{question}', 'QuestionController@update')->name('question.update');
+        Route::get('destroy/{question}', 'QuestionController@destroy')->name('question.destroy');
+    });
+
+    Route::prefix('answer')->group(function(){
+        Route::get('{question}', 'AnswerController@index')->name('answer.index');
+    });
+
+
+
+});

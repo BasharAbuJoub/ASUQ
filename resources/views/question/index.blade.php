@@ -20,8 +20,8 @@
                 <td class="" style="width: 250px;">{{ $question->body }}</td>
                 <td>{{ $question->category->name }}</td>
                 <td>
-                    <a class="button is-link is-small" href="{{asset($question->image)}}">Preview</a>
-                    <a class="button is-success is-small" href="#">Answers</a>
+                    <a class="button is-link is-small" href="{{ route('question.show', ['question' => $question->id]) }}">Preview</a>
+                    <a class="button is-warning is-small" href="{{ route('question.edit', ['question' => $question->id]) }}">Edit</a>
                     <a class="button is-danger is-small"
                         href="{{ route('question.destroy', ['question' => $question->id]) }}">
                         Delete

@@ -67,7 +67,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -79,7 +81,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|min:2|max:30'
+        ]);
+
+        $category->update([
+            'name' => $data['name']
+        ]);
+        return redirect()->route('category.index');
     }
 
     /**
@@ -90,6 +99,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->questions()->delete();
+        $category->delete();
+
+        return redirect()->route('category.index');
     }
 }
