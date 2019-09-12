@@ -129,7 +129,32 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+
+        $data = $request->validate([
+            'body' => 'required|string|min:4',
+            'score' => 'required|integer|min:1',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $question->update([
+            'body' => $request->body,
+            'score' => $request->score,
+            'category_id' => $request->category_id
+        ]);
+
+
+
+        $correctness = ($request->is_correct != null ? $request->is_correct : []);
+        foreach($question->answers as $i=>$answer){
+            $answer->update([
+                'body' => $request->answer_body[$i],
+                'is_correct' => in_array($i, $correctness)
+            ]);
+        }
+
+        session()->flash('notify', 'Successfully updated question #' . $question->id );
+        return redirect()->back();
+
     }
 
     /**
@@ -142,6 +167,10 @@ class QuestionController extends Controller
     {
         $question->answers()->delete();
         $question->delete();
+
+
+        session()->flash('notify', 'Deleted question #' . $question->id);
+
         return redirect()->back();
 
     }

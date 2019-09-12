@@ -41,5 +41,14 @@ Route::prefix('control')->group(function(){
     });
 
 
+    Route::prefix('exam')->group(function(){
+        Route::get('', 'ExamController@index')->name('exam.index');
+        Route::get('show/{exam}', 'ExamController@show')->name('exam.show');
+        Route::get('create', 'ExamController@create')->name('exam.create');
+        Route::post('store', 'ExamController@store')->name('exam.store');
+        Route::get('edit/{exam}', 'ExamController@edit')->name('exam.edit');
+        Route::post('update/{exam}', 'ExamController@update')->name('exam.update');
+        Route::get('destroy/{exam}', 'ExamController@destroy')->name('exam.destroy');
+    });
 
 });

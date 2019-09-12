@@ -49,11 +49,27 @@
                 </div>
             </section>
             <div class="container" style="padding: 0 20px;">
+                @if (session('notify') != null)
+                <div id="notify" class="notification is-success" style="margin-top: 20px;">
+                    <button class="delete" onclick="removeNotification()"></button>
+                    {{session('notify')}}
+                </div>
+
+                @endif
                 @yield('content')
             </div>
         </main>
     </div>
 
+
     @yield('script')
+    <script>
+        function removeNotification(){
+
+            document.getElementById('notify').remove();
+
+        }
+    </script>
+
 </body>
 </html>

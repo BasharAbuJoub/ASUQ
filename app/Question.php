@@ -20,4 +20,9 @@ class Question extends Model
         return $this->answers()->where('id', $this->correct_answer_id)->first();
     }
 
+
+    public function exams(){
+        return $this->belongsToMany(Exam::class);
+    }
+
 }

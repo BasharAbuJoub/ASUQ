@@ -12,6 +12,7 @@
                 </p>
                 <ul class="menu-list">
                     <li><a href="{{ route('category.index') }}">Categories</a></li>
+                    <li><a href="{{ route('exam.index') }}">Exams</a></li>
                     <li><a href="{{ route('question.index') }}">Questions</a></li>
                     <li><a href="{{ route('category.index') }}">Users</a></li>
                 </ul>
