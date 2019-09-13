@@ -1,14 +1,6 @@
 <?php
 
-class Notify{
-
-
-    public function notify($message, $type = 'success'){
-        session()->flash('notify', $message);
-    }
-
-
-
-
-
+function notify($message, $type = 'success'){
+    session()->flash('type', $type);
+    session()->flash('notify', $message);
 }

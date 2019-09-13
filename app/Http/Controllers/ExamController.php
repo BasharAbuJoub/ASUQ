@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exam;
+use App\Question;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -10,7 +12,6 @@ class ExamController extends Controller
     //
 
     public function index(){
-
         return view('exam.index',[
             'exams' => Exam::all()
         ]);
@@ -33,14 +34,16 @@ class ExamController extends Controller
         ]);
 
         $exam = Exam::create($request->only(['name']));
-        session()->flash('notify', 'Successfully created "' . $exam->name . '" exam. You can manage exam questions
-         by visiting the edit page.');
+        notify('Successfully created "' . $exam->name . '" exam. You can manage exam questions
+        by visiting the edit page.');
 
         return redirect()->route('exam.index');
     }
 
     public function edit(Exam $exam){
+        $questions = Question::all();
         return view('exam.edit',[
+            'questions' => $questions,
             'exam' => $exam
         ]);
     }
@@ -53,7 +56,7 @@ class ExamController extends Controller
 
     public function destroy(Exam $exam){
         $exam->delete();
-        session()->flash('notify', 'Successfully deleted exam.');
+        notify('Successfully deleted exam.');
         return redirect()->route('exam.index');
     }
 

@@ -7,6 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Question::class, function (Faker $faker) {
     return [
-        //
+        'body' => $faker->sentence(),
+        'score' => 1,
+        'category_id' => 1
     ];
 });
