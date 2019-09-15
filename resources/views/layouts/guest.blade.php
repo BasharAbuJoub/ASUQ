@@ -17,10 +17,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/guest.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar is-link">
+        <nav class="navbar is-white">
             <div class="container" >
                 <div class="navbar-menu">
                     <div class="navbar-start">
@@ -36,18 +37,7 @@
             </div>
         </nav>
         <main class="py-4">
-            <section class="hero is-light">
-                <div class="hero-body">
-                    <div class="container" >
-                        <h1 class="title">
-                              # Dashboard
-                        </h1>
-                        <h2 class="subtitle">
-                              Where you can manage everything ;D
-                        </h2>
-                    </div>
-                </div>
-            </section>
+
             <div class="container" style="padding: 0 20px;">
                 @if (session('notify') != null)
                 <div id="notify" class="notification is-{{session('type')}}" style="margin-top: 20px;">
@@ -60,7 +50,7 @@
             </div>
         </main>
 
-        <section class="hero is-dark" style="margin-top: 180px;">
+        {{-- <section class="hero is-dark" style="margin-top: 180px;">
             <div class="hero-body">
                 <div class="container has-text-centered" >
                     <h2 class="title is-4">
@@ -72,7 +62,7 @@
                     </h2>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
     </div>
 

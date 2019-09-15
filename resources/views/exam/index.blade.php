@@ -9,6 +9,7 @@
         <tr>
             <th>ID</th>
             <th>Exam Name</th>
+            <th>Duration</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -17,6 +18,7 @@
         <tr>
             <td>{{ $exam->id }}</td>
             <td>{{ $exam->name }}</td>
+            <td>{{ $exam->duration }}m</td>
             <td>
                 <a class="button is-success is-small"
                     href="{{ route('question.index', ['exam' => $exam->id]) }}">Questions</a>

@@ -15,6 +15,12 @@
             </div>
         </div>
         <div class="field">
+            <label class="label">Exam Duration</label>
+            <div class="control">
+                <input class="input" type="number" name="duration" placeholder="Exam duration">
+            </div>
+        </div>
+        <div class="field">
             <p class="has-text-grey is-size-7">You can choose exam questions by visiting the exam edit page.</p>
         </div>
         <button type="submit" class="button is-success">Create</button>

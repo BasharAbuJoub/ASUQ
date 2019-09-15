@@ -40,7 +40,6 @@ Route::prefix('control')->group(function(){
         Route::get('{question}', 'AnswerController@index')->name('answer.index');
     });
 
-
     Route::prefix('exam')->group(function(){
         Route::get('', 'ExamController@index')->name('exam.index');
         Route::get('show/{exam}', 'ExamController@show')->name('exam.show');
@@ -51,4 +50,12 @@ Route::prefix('control')->group(function(){
         Route::get('destroy/{exam}', 'ExamController@destroy')->name('exam.destroy');
     });
 
+
 });
+
+Route::get('register', 'GuestController@create')->name('guest.create');
+Route::post('store', 'GuestController@store')->name('guest.store');
+
+
+Route::get('exam/enroll/{exam}', 'ExamController@enroll')->name('exam.enroll');
+

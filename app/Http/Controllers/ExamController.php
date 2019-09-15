@@ -30,10 +30,11 @@ class ExamController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'name' => 'required|string|min:3|max:100'
+            'name' => 'required|string|min:3|max:100',
+            'duration' => 'required|integer|min:1',
         ]);
 
-        $exam = Exam::create($request->only(['name']));
+        $exam = Exam::create($request->only(['name', 'duration']));
         notify('Successfully created "' . $exam->name . '" exam. You can manage exam questions
         by visiting the edit page.');
 
@@ -49,6 +50,19 @@ class ExamController extends Controller
     }
 
     public function update(Request $request, Exam $exam){
+
+        $request->validate([
+            'name' => 'required|string|min:3|max:100',
+            'duration' => 'required|integer|min:1',
+        ]);
+
+        $exam->update($request->only(['name', 'duration']));
+
+        $questions = $request->has('questions') ? $request->questions : [];
+
+        $exam->questions()->syncWithoutDetaching($questions);
+
+        notify('Exam updated successfully');
 
         return redirect()->route('exam.index');
 

@@ -17,14 +17,15 @@ class QuestionController extends Controller
      */
     public function index(Request $request)
     {
-        $questions = null;
+        $questions = Question::query();
         if($request->has('category')){
-            $questions = Question::where('category_id', $request->category)->get();
-        }else{
-            $questions = Question::all();
+            $questions->where('category_id', $request->category);
+        }else if($request->has('exam')){
+            $questions->whereHas('exams', function($query) use ($request){
+                $query->where('exams.id', $request->exam);
+            });
         }
-
-
+        $questions = $questions->get();
         return view('question.index', [
             'questions' => $questions,
         ]);
@@ -152,7 +153,7 @@ class QuestionController extends Controller
             ]);
         }
 
-        session()->flash('notify', 'Successfully updated question #' . $question->id );
+        notify('Successfully updated question #' . $question->id);
         return redirect()->back();
 
     }
