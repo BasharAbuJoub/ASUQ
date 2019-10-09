@@ -18,21 +18,27 @@
 
                                 <label class="label">Name</label>
                                 <input type="text" class="input" name="name" placeholder="Enter your name">
-
+                                @error('name')
+                                <span class="has-text-danger">{{$message}}</span>
+                                @enderror
                             </div>
 
                             <div class="field">
 
                                 <label class="label">Email</label>
                                 <input type="email" class="input" name="email" placeholder="Enter your email">
-
+                                @error('email')
+                                <span class="has-text-danger">{{$message}}</span>
+                                @enderror
                             </div>
 
                             <div class="field">
 
                                 <label class="label">Phone</label>
                                 <input type="text" class="input" name="phone" placeholder="Enter your phone">
-
+                                @error('phone')
+                                <span class="has-text-danger">{{$message}}</span>
+                                @enderror
                             </div>
 
 
@@ -40,14 +46,18 @@
 
                                 <label class="label">Address</label>
                                 <input type="text" class="input" name="address" placeholder="Country, City, Street">
-
+                                @error('address')
+                                <span class="has-text-danger">{{$message}}</span>
+                                @enderror
                             </div>
 
                             <div class="field">
 
                                 <label class="label">Birthdate</label>
                                 <input type="date" class="input" name="birthdate" placeholder="Birth-date">
-
+                                @error('birthdate')
+                                <span class="has-text-danger">{{$message}}</span>
+                                @enderror
                             </div>
 
                             <div class="columns">
@@ -61,6 +71,9 @@
                                             </select>
                                         </div>
                                     </div>
+                                    @error('gender')
+                                    <span class="has-text-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
                                 <div class="column is-6">
                                     <div class="field">
@@ -74,6 +87,9 @@
                                                 <option value="4">Other</option>
                                             </select>
                                         </div>
+                                        @error('degree')
+                                        <span class="has-text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

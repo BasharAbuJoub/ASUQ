@@ -12,10 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('control/category');
 });
 
 Route::prefix('control')->group(function(){
+
+    Route::get('', function(){
+        return redirect('control/category');
+    });
+
     Route::prefix('category')->group(function(){
         Route::get('create', 'CategoryController@create')->name('category.create');
         Route::get('', 'CategoryController@index')->name('category.index');
